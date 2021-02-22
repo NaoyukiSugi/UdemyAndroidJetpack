@@ -1,3 +1,4 @@
-include ':sec2'
+include ':sec2-8'
+include ':sec2-5'
 include ':app'
 rootProject.name = "UdemyAndroidJetpack"
