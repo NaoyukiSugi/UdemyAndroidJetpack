@@ -2,9 +2,13 @@ package com.example.sec3_13
 
 import androidx.lifecycle.ViewModel
 
-class MainActivityViewModel : ViewModel() {
+class MainActivityViewModel(startingTotal: Int) : ViewModel() {
 
     private var total = 0
+
+    init {
+        total = startingTotal
+    }
 
     fun getTotal() = total
 
