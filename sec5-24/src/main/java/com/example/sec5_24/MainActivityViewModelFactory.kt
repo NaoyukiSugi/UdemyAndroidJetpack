@@ -1,4 +1,4 @@
-package com.anushka.viewmodeldemo2
+package com.example.sec5_24
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
