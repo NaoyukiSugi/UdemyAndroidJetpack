@@ -1,3 +1,4 @@
+include ':sec6-27'
 include ':sec5-24'
 include ':sec5-22'
 include ':sec4-18'
