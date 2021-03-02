@@ -2,7 +2,7 @@ package com.example.sec8_40
 
 import kotlinx.coroutines.*
 
-class UserDataManager {
+class UserDataManager1 {
     suspend fun getTotalUserCount(): Int {
         var count = 0
         CoroutineScope(Dispatchers.IO).launch {
