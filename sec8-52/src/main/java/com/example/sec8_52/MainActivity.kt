@@ -2,8 +2,14 @@ package com.example.sec8_52
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.view.View
 import androidx.lifecycle.lifecycleScope
 import com.example.sec8_52.ui.main.MainFragment
+import kotlinx.android.synthetic.main.main_activity.*
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.delay
+import kotlinx.coroutines.launch
 
 class MainActivity : AppCompatActivity() {
 
@@ -16,5 +22,26 @@ class MainActivity : AppCompatActivity() {
                 .commitNow()
         }
 
+//        lifecycleScope.launch {
+//            delay(5000)
+//            progressBar.visibility = View.VISIBLE
+//            delay(10000)
+//            progressBar.visibility = View.GONE
+//        }
+        lifecycleScope.launch(Dispatchers.IO) {
+            Log.i("MyTag", " thread is : ${Thread.currentThread().name}")
+        }
+
+        lifecycleScope.launchWhenCreated {
+
+        }
+
+        lifecycleScope.launchWhenStarted {
+
+        }
+
+        lifecycleScope.launchWhenResumed {
+
+        }
     }
 }
