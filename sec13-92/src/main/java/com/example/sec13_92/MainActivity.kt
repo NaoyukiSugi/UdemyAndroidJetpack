@@ -9,17 +9,18 @@ class MainActivity : AppCompatActivity() {
     @Inject
     lateinit var smartPhone: SmartPhone
 
-//    @Inject
-//    lateinit var memoryCard: MemoryCard
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+//        DaggerSmartPhoneComponent
+//                .create()
+//                .inject(this)
+//        smartPhone.makeACallWithRecording()
         DaggerSmartPhoneComponent
-                .create()
+                .builder()
+                .memoryCardModule(MemoryCardModule(1000))
+                .build()
                 .inject(this)
-        smartPhone.makeACallWithRecording()
-//        memoryCard.getSpaceAvailablity()
     }
 }
