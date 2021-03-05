@@ -18,7 +18,7 @@ android {
 
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-        buildConfigField "String", "API_KEY", "\"${project.property("com.example.tmdbApiKey")}\""
+        buildConfigField "String", "API_KEY", "\"${project.property("tmdbApiKey")}\""
     }
 
     buildTypes {
