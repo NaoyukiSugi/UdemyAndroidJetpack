@@ -1,4 +1,4 @@
-package com.example.sec14_102.data
+package com.example.sec14_102.data.model.artist
 
 data class ArtistList(
         val page: Int,
