@@ -1,8 +1,8 @@
 package com.example.sec14_102.data.api
 
-import com.example.sec14_102.data.ArtistList
-import com.example.sec14_102.data.MovieList
-import com.example.sec14_102.data.TvShowList
+import com.example.sec14_102.data.model.artist.ArtistList
+import com.example.sec14_102.data.model.movie.MovieList
+import com.example.sec14_102.data.model.tvshow.TvShowList
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
