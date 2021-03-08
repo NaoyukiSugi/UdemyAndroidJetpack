@@ -1,8 +1,8 @@
-package com.anushka.tmdbclient.data.repository.tvshow.datasourceImpl
+package com.example.sec14_102.data.repository.tvshow.datasourceImpl
 
-import com.anushka.tmdbclient.data.api.TMDBService
-import com.anushka.tmdbclient.data.model.tvshow.TvShowList
-import com.anushka.tmdbclient.data.repository.tvshow.datasource.TvShowRemoteDatasource
+import com.example.sec14_102.data.api.TMDBService
+import com.example.sec14_102.data.model.tvshow.TvShowList
+import com.example.sec14_102.data.repository.tvshow.datasource.TvShowRemoteDatasource
 import retrofit2.Response
 
 class TvShowRemoteDataSourceImpl(

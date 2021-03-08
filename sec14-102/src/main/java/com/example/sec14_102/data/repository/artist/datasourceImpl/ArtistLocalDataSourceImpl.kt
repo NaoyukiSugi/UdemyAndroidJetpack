@@ -1,16 +1,16 @@
-package com.anushka.tmdbclient.data.repository.artist.datasourceImpl
+package com.example.sec14_102.data.repository.artist.datasourceImpl
 
-import com.anushka.tmdbclient.data.db.ArtistDao
-import com.anushka.tmdbclient.data.model.artist.Artist
-import com.anushka.tmdbclient.data.repository.artist.datasource.ArtistLocalDataSource
+import com.example.sec14_102.data.db.ArtistDao
+import com.example.sec14_102.data.model.artist.Artist
+import com.example.sec14_102.data.repository.artist.datasource.ArtistLocalDataSource
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class ArtistLocalDataSourceImpl(private val artistDao:ArtistDao):
+class ArtistLocalDataSourceImpl(private val artistDao: ArtistDao) :
     ArtistLocalDataSource {
     override suspend fun getArtistsFromDB(): List<Artist> {
-       return artistDao.getArtists()
+        return artistDao.getArtists()
     }
 
     override suspend fun saveArtistsToDB(artists: List<Artist>) {
@@ -20,8 +20,8 @@ class ArtistLocalDataSourceImpl(private val artistDao:ArtistDao):
     }
 
     override suspend fun clearAll() {
-       CoroutineScope(Dispatchers.IO).launch {
-           artistDao.deleteAllArtists()
-       }
+        CoroutineScope(Dispatchers.IO).launch {
+            artistDao.deleteAllArtists()
+        }
     }
 }

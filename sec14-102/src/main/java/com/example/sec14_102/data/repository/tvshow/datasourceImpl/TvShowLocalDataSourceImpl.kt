@@ -1,16 +1,16 @@
-package com.anushka.tmdbclient.data.repository.tvshow.datasourceImpl
+package com.example.sec14_102.data.repository.tvshow.datasourceImpl
 
-import com.anushka.tmdbclient.data.db.TvShowDao
-import com.anushka.tmdbclient.data.model.tvshow.TvShow
-import com.anushka.tmdbclient.data.repository.tvshow.datasource.TvShowLocalDataSource
+import com.example.sec14_102.data.db.TvShowDao
+import com.example.sec14_102.data.model.tvshow.TvShow
+import com.example.sec14_102.data.repository.tvshow.datasource.TvShowLocalDataSource
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 
-class TvShowLocalDataSourceImpl(private val tvDao:TvShowDao):
+class TvShowLocalDataSourceImpl(private val tvDao: TvShowDao) :
     TvShowLocalDataSource {
     override suspend fun getTvShowsFromDB(): List<TvShow> {
-       return tvDao.getTvShows()
+        return tvDao.getTvShows()
     }
 
     override suspend fun saveTvShowsToDB(tvShows: List<TvShow>) {
@@ -20,8 +20,8 @@ class TvShowLocalDataSourceImpl(private val tvDao:TvShowDao):
     }
 
     override suspend fun clearAll() {
-       CoroutineScope(Dispatchers.IO).launch {
-           tvDao.deleteAllTvShows()
-       }
+        CoroutineScope(Dispatchers.IO).launch {
+            tvDao.deleteAllTvShows()
+        }
     }
 }

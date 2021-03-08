@@ -1,7 +1,7 @@
-package com.anushka.tmdbclient.data.repository.artist.datasourceImpl
+package com.example.sec14_102.data.repository.artist.datasourceImpl
 
-import com.anushka.tmdbclient.data.model.artist.Artist
-import com.anushka.tmdbclient.data.repository.artist.datasource.ArtistCacheDataSource
+import com.example.sec14_102.data.model.artist.Artist
+import com.example.sec14_102.data.repository.artist.datasource.ArtistCacheDataSource
 
 class ArtistCacheDataSourceImpl :
     ArtistCacheDataSource {
@@ -12,7 +12,7 @@ class ArtistCacheDataSourceImpl :
     }
 
     override suspend fun saveArtistsToCache(artists: List<Artist>) {
-       artistList.clear()
-       artistList = ArrayList(artists)
+        artistList.clear()
+        artistList = ArrayList(artists)
     }
 }
