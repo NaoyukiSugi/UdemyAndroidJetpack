@@ -1,7 +1,7 @@
-package com.anushka.tmdbclient.data.repository.tvshow.datasourceImpl
+package com.example.sec14_102.data.repository.tvshow.datasourceImpl
 
-import com.anushka.tmdbclient.data.model.tvshow.TvShow
-import com.anushka.tmdbclient.data.repository.tvshow.datasource.TvShowCacheDataSource
+import com.example.sec14_102.data.model.tvshow.TvShow
+import com.example.sec14_102.data.repository.tvshow.datasource.TvShowCacheDataSource
 
 class TvShowCacheDataSourceImpl :
     TvShowCacheDataSource {
@@ -12,7 +12,7 @@ class TvShowCacheDataSourceImpl :
     }
 
     override suspend fun saveTvShowsToCache(tvShows: List<TvShow>) {
-       tvShowList.clear()
-       tvShowList = ArrayList(tvShows)
+        tvShowList.clear()
+        tvShowList = ArrayList(tvShows)
     }
 }
