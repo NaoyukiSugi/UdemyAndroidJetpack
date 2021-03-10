@@ -11,7 +11,7 @@ import com.example.sec14_102.presentation.movie.MovieActivity
 import com.example.sec14_102.presentation.tv.TvShowActivity
 
 class HomeActivity : AppCompatActivity() {
-    lateinit var binding: ActivityHomeBinding
+    private lateinit var binding: ActivityHomeBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = DataBindingUtil.setContentView(this, R.layout.activity_home)
