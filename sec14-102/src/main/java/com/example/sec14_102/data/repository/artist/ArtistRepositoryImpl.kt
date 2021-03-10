@@ -4,11 +4,11 @@ import android.util.Log
 import com.example.sec14_102.data.model.artist.Artist
 import com.example.sec14_102.data.repository.artist.datasource.ArtistCacheDataSource
 import com.example.sec14_102.data.repository.artist.datasource.ArtistLocalDataSource
-import com.example.sec14_102.data.repository.artist.datasource.ArtistRemoteDatasource
+import com.example.sec14_102.data.repository.artist.datasource.ArtistRemoteDataSource
 import com.example.sec14_102.domain.repository.ArtistRepository
 
 class ArtistRepositoryImpl(
-        private val artistRemoteDatasource: ArtistRemoteDatasource,
+        private val artistRemoteDataSource: ArtistRemoteDataSource,
         private val artistLocalDataSource: ArtistLocalDataSource,
         private val artistCacheDataSource: ArtistCacheDataSource
 ) : ArtistRepository {
@@ -27,7 +27,7 @@ class ArtistRepositoryImpl(
     suspend fun getArtistsFromAPI(): List<Artist> {
         lateinit var artistList: List<Artist>
         try {
-            val response = artistRemoteDatasource.getArtists()
+            val response = artistRemoteDataSource.getArtists()
             val body = response.body()
             if (body != null) {
                 artistList = body.artists

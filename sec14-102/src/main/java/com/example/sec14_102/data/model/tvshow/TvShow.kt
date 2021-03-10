@@ -3,14 +3,19 @@ package com.example.sec14_102.data.model.tvshow
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.google.gson.annotations.SerializedName
 
 @Entity(tableName = "popular_tvShows")
 data class TvShow(
-        @PrimaryKey
-        val id: Int,
-        @ColumnInfo(name = "popular_tv_show")
-        val name: String,
+        @SerializedName("first_air_date")
         val firstAirDate: String,
+        @PrimaryKey
+        @SerializedName("id")
+        val id: Int,
+        @SerializedName("name")
+        val name: String,
+        @SerializedName("overview")
         val overview: String,
-        val posterPath: String,
+        @SerializedName("poster_path")
+        val posterPath: String
 )

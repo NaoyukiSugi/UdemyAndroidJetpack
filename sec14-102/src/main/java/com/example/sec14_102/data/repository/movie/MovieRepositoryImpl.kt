@@ -6,11 +6,12 @@ import com.example.sec14_102.data.repository.movie.datasource.MovieCacheDataSour
 import com.example.sec14_102.data.repository.movie.datasource.MovieLocalDataSource
 import com.example.sec14_102.data.repository.movie.datasource.MovieRemoteDatasource
 import com.example.sec14_102.domain.repository.MovieRepository
+import java.lang.Exception
 
 class MovieRepositoryImpl(
-        private val movieRemoteDatasource: MovieRemoteDatasource,
-        private val movieLocalDataSource: MovieLocalDataSource,
-        private val movieCacheDataSource: MovieCacheDataSource
+    private val movieRemoteDataSource: MovieRemoteDatasource,
+    private val movieLocalDataSource: MovieLocalDataSource,
+    private val movieCacheDataSource: MovieCacheDataSource
 ) : MovieRepository {
     override suspend fun getMovies(): List<Movie>? {
         return getMoviesFromCache()
@@ -27,7 +28,7 @@ class MovieRepositoryImpl(
     suspend fun getMoviesFromAPI(): List<Movie> {
         lateinit var movieList: List<Movie>
         try {
-            val response = movieRemoteDatasource.getMovies()
+            val response = movieRemoteDataSource.getMovies()
             val body = response.body()
             if (body != null) {
                 movieList = body.movies
@@ -66,7 +67,6 @@ class MovieRepositoryImpl(
             return movieList
         } else {
             movieList = getMoviesFromDB()
-            movieLocalDataSource.saveMoviesToDB(movieList)
             movieCacheDataSource.saveMoviesToCache(movieList)
         }
 

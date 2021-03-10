@@ -8,7 +8,7 @@ import com.example.sec14_102.data.repository.tvshow.datasource.TvShowRemoteDatas
 import com.example.sec14_102.domain.repository.TvShowRepository
 
 class TvShowRepositoryImpl(
-        private val tvShowRemoteDatasource: TvShowRemoteDatasource,
+        private val tvShowRemoteDataSource: TvShowRemoteDatasource,
         private val tvShowLocalDataSource: TvShowLocalDataSource,
         private val tvShowCacheDataSource: TvShowCacheDataSource
 ) : TvShowRepository {
@@ -27,7 +27,7 @@ class TvShowRepositoryImpl(
     suspend fun getTvShowsFromAPI(): List<TvShow> {
         lateinit var tvShowList: List<TvShow>
         try {
-            val response = tvShowRemoteDatasource.getTvShows()
+            val response = tvShowRemoteDataSource.getTvShows()
             val body = response.body()
             if (body != null) {
                 tvShowList = body.tvShows
