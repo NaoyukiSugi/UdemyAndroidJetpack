@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">sec25-230</string>
+    <string name="api_key">api_key</string>
+    <string name="title_activity_movie">MovieActivity</string>
+</resources>
