@@ -4,12 +4,11 @@ import androidx.lifecycle.MutableLiveData
 import androidx.paging.DataSource
 
 class MovieDataSourceFactory(
-    private var movieDataSource: MovieDataSource,
-    private val mutableLiveData: MutableLiveData<MovieDataSource>
+    private val mutableLiveData: MutableLiveData<MovieDataSource> = MutableLiveData<MovieDataSource>()
 ) : DataSource.Factory<Long, Movie>() {
 
     override fun create(): DataSource<Long, Movie> {
-        movieDataSource = MovieDataSource()
+        val movieDataSource = MovieDataSource()
         mutableLiveData.postValue(movieDataSource)
         return movieDataSource
     }
