@@ -16,13 +16,11 @@ import com.example.sec25_230.databinding.MovieListItemBinding;
 import com.example.sec25_230.model.Movie;
 import com.example.sec25_230.view.MovieActivity;
 
-import java.util.ArrayList;
-
 public class MovieAdapter extends PagedListAdapter<Movie, MovieAdapter.MovieViewHolder> {
 
     private Context context;
 
-    public MovieAdapter(Context context, ArrayList<Movie> movieArrayList) {
+    public MovieAdapter(Context context) {
         super(Movie.CALLBACK);
         this.context = context;
     }

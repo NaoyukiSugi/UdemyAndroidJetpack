@@ -1,4 +1,4 @@
-package com.example.sec25_230.view
+package com.example.sec25_230.view;
 
 import android.content.res.Configuration;
 import android.os.Bundle;
@@ -6,6 +6,7 @@ import android.os.Bundle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.databinding.DataBindingUtil;
 import androidx.lifecycle.ViewModelProviders;
+import androidx.paging.PagedList;
 import androidx.recyclerview.widget.DefaultItemAnimator;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -17,11 +18,9 @@ import com.example.sec25_230.databinding.ActivityMainBinding;
 import com.example.sec25_230.model.Movie;
 import com.example.sec25_230.viewmodel.MainActivityViewModel;
 
-import java.util.ArrayList;
-
 public class MainActivity extends AppCompatActivity {
 
-    private ArrayList<Movie> movies;
+    private PagedList<Movie> movies;
     private RecyclerView recyclerView;
     private MovieAdapter movieAdapter;
     private SwipeRefreshLayout swipeRefreshLayout;
@@ -42,15 +41,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void getPopularMovies() {
-        mainActivityViewModel.getAllMovies().observe(this, moviesFromLiveData -> {
-            movies = (ArrayList<Movie>) moviesFromLiveData;
+        mainActivityViewModel.getMoviesPagedList().observe(this, moviesFromLiveData -> {
+            movies = moviesFromLiveData;
             showOnRecyclerView();
         });
     }
 
     private void showOnRecyclerView() {
         recyclerView = activityMainBinding.rvMovies;
-        movieAdapter = new MovieAdapter(this, movies);
+        movieAdapter = new MovieAdapter(this);
+        movieAdapter.submitList(movies);
         if (this.getResources().getConfiguration().orientation == Configuration.ORIENTATION_PORTRAIT) {
             recyclerView.setLayoutManager(new GridLayoutManager(this, 2));
         } else {
