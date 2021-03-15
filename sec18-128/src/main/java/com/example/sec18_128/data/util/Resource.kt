@@ -1,4 +1,4 @@
-package com.example.sec18_128.util
+package com.example.sec18_128.data.util
 
 sealed class Resource<T>(
     val data: T? = null,
