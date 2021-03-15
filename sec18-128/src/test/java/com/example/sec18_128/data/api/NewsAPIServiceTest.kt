@@ -53,6 +53,7 @@ class NewsAPIServiceTest {
         }
     }
 
+    @Test
     fun getTopHeadlines_receivedResponse_correctPageSize() {
         runBlocking {
             enqueueMockResponse("newsresponse.json")
@@ -62,6 +63,7 @@ class NewsAPIServiceTest {
         }
     }
 
+    @Test
     fun getTopHeadlines_receivedResponse_correctContent() {
         runBlocking {
             enqueueMockResponse("newsresponse.json")
