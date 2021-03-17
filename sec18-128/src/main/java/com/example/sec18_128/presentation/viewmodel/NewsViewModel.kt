@@ -11,13 +11,15 @@ import androidx.lifecycle.viewModelScope
 import com.example.sec18_128.data.model.APIResponse
 import com.example.sec18_128.data.util.Resource
 import com.example.sec18_128.domain.usecase.GetNewsHeadlinesUseCase
+import com.example.sec18_128.domain.usecase.GetSearchedNewsUseCase
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import java.lang.Exception
 
 class NewsViewModel(
     private val app: Application,
-    val getNewsHeadlinesUseCase: GetNewsHeadlinesUseCase
+    private val getNewsHeadlinesUseCase: GetNewsHeadlinesUseCase,
+    private val getSearchedNewsUseCase: GetSearchedNewsUseCase
 ) : AndroidViewModel(app) {
     val newsHeadLines: MutableLiveData<Resource<APIResponse>> = MutableLiveData()
 
@@ -62,5 +64,28 @@ class NewsViewModel(
             }
         }
         return false
+    }
+
+    // search
+    val searchedNews: MutableLiveData<Resource<APIResponse>> = MutableLiveData()
+
+    fun searchNews(
+        country: String,
+        searchQuery: String,
+        page: Int
+    ) = viewModelScope.launch(Dispatchers.IO) {
+        searchedNews.postValue(Resource.Loading())
+        try {
+            if (isNetworkAvailable(app)) {
+                val apiResult = getSearchedNewsUseCase.execute(country, searchQuery, page)
+                searchedNews.postValue(apiResult)
+            } else {
+                searchedNews.postValue(Resource.Error("Internet is now available"))
+            }
+        } catch (e: Exception) {
+            searchedNews.postValue(Resource.Error(e.message.toString()))
+        }
+
+
     }
 }

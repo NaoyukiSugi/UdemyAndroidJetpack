@@ -1,7 +1,9 @@
-package com.example.sec18_128.presentation.viewmodel
+package com.example.sec18_128.presentation.di
 
 import android.app.Application
 import com.example.sec18_128.domain.usecase.GetNewsHeadlinesUseCase
+import com.example.sec18_128.domain.usecase.GetSearchedNewsUseCase
+import com.example.sec18_128.presentation.viewmodel.NewsViewModelFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -16,8 +18,9 @@ class FactoryModule {
     @Provides
     fun provideNewsViewModelFactory(
         application: Application,
-        getNewsHeadlinesUseCase: GetNewsHeadlinesUseCase
+        getNewsHeadlinesUseCase: GetNewsHeadlinesUseCase,
+        getSearchedNewsUseCase: GetSearchedNewsUseCase
     ): NewsViewModelFactory {
-        return NewsViewModelFactory(application, getNewsHeadlinesUseCase)
+        return NewsViewModelFactory(application, getNewsHeadlinesUseCase, getSearchedNewsUseCase)
     }
 }
