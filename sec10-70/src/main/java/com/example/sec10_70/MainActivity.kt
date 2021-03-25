@@ -19,8 +19,9 @@ class MainActivity : AppCompatActivity() {
         retService = RetrofitInstance
             .getRetrofitInstance()
             .create(AlbumService::class.java)
-        getRequestWithQueryParameters()
-        getRequestWithPathParameters()
+//        getRequestWithQueryParameters()
+//        getRequestWithPathParameters()
+        uploadAlbum()
     }
 
     private fun getRequestWithQueryParameters() {
@@ -52,6 +53,21 @@ class MainActivity : AppCompatActivity() {
         pathResponse.observe(this, Observer {
             val title = it.body()?.title
             Toast.makeText(applicationContext, title, Toast.LENGTH_LONG).show()
+        })
+    }
+
+    private fun uploadAlbum() {
+        val album = AlbumsItem(0, "My title", 3)
+        val postResponse: LiveData<Response<AlbumsItem>> = liveData {
+            val response = retService.uploadAlbum(album)
+            emit(response)
+        }
+        postResponse.observe(this, Observer {
+            val receivedAlbumsItem = it.body()
+            val result = " " + "Album Title: ${receivedAlbumsItem?.title}" + "\n" +
+                    " " + "Album ID: ${receivedAlbumsItem?.id}" + "\n" +
+                    " " + "User ID: ${receivedAlbumsItem?.userId}" + "\n\n\n"
+            text_view.text = result
         })
     }
 }
