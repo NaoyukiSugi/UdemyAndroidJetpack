@@ -6,11 +6,11 @@ import com.example.sec18_128.data.repository.dataSourceImpl.NewsRemoteDataSource
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.components.ApplicationComponent
+import dagger.hilt.components.SingletonComponent
 import javax.inject.Singleton
 
 @Module
-@InstallIn(ApplicationComponent::class)
+@InstallIn(SingletonComponent::class)
 class RemoteDataModule {
 
     @Singleton
